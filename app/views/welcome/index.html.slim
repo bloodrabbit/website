@@ -2,7 +2,22 @@ h1
   | Welcome to Step Lib!
 
 p
-  | Datastore: #{StepCollection.first.datastore}
+  | Version: #{@current_step_collection.version}
+
+p
+  | Steps:
+  ul
+    - @current_step_collection.datastore['steps'].each do |a_step|
+      li
+        | Versions:
+        ul
+          - @current_step_collection.versions_of_step(a_step[0]).each do |a_ver|
+            li
+              | #{a_ver}
 
 p
   | Work in progress....
+
+p
+  i
+    | Datastore: #{@current_step_collection.datastore}
