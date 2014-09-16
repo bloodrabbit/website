@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+stepcollection = StepCollection.create()
+stepcollection.datastore = {
+  version: '0.9.0'
+}
+stepcollection.save!
