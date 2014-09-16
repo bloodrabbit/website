@@ -1,4 +1,4 @@
-box: guille/ruby2.1.0-heroku-postgresql@1.0.2
+box: viktorbenei/ruby2.1.2-heroku-postgresql
 services:
     - wercker/postgresql
 build:
