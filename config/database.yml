@@ -23,4 +23,8 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: <%= ENV['POSTGRE_PROD_DB_NAME'] %>
+  host: <%= ENV['POSTGRE_PROD_DB_HOST'] %>
+  port: <%= ENV['POSTGRE_PROD_DB_PORT'] %>
+  username: <%= ENV['POSTGRE_PROD_DB_USERNAME'] %>
+  password: <%= ENV['POSTGRE_PROD_DB_PASSWORD'] %>
