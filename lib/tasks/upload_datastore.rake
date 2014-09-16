@@ -8,7 +8,7 @@ task :upload_datastore, [:filepth] => [:environment] do |t, args|
   data_hash = JSON.parse(file).to_json
   puts " data_hash: #{data_hash}"
   puts "-> Uploading"
-  sc = StepCollection.first
+  sc = StepCollection.first_or_create
   sc.datastore = data_hash
   sc.save!
   puts "-> [DONE]"
