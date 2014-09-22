@@ -1,7 +1,9 @@
 (function() {
   "use strict";
 
-  angular.module("Steplib").controller('SearchCtrl', function($scope, $http, StepCollection) {
+  angular.module("Steplib").controller('SearchCtrl',
+    ['$scope', '$http', 'StepCollection',
+    function($scope, $http, StepCollection) {
 
     $scope.test = "tested";
     $scope.step_collection = new StepCollection();
@@ -10,5 +12,5 @@
       $scope.step_collection.fetch();
     }
 
-  });
+  }]);
 })();

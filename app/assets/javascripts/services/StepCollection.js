@@ -1,7 +1,8 @@
 (function() {
   "use strict";
 
-  angular.module('Steplib').factory('StepCollection', function($http) {
+  angular.module('Steplib').factory('StepCollection',
+    ['$http', function($http) {
 
     var StepCollection = function() {
       this.error = null;
@@ -25,6 +26,6 @@
 
     return StepCollection;
 
-  });
+  }]);
 
 })();
