@@ -1,10 +1,29 @@
-.container[ng-controller="SearchCtrl" ng-init="init()"]
+.welcome.container[ng-controller="SearchCtrl" ng-init="init()"]
+  .main-links
+    p
+      a.btn.btn-link.btn-lg[href="https://github.com/steplib/steplib" role="button"]
+        | StepLib Repo
+      a.btn.btn-link.btn-lg[href="https://github.com/steplib/website" role="button"]
+        | StepLib Website Repo
+      a.btn.btn-link.btn-lg[href="https://github.com/steplib/steplib/tree/master/docs" role="button"]
+        | Docs
   .jumbotron
     h1
       | Welcome to Step Lib!
     p
-      | Version: #{@current_step_collection.version}
+      small<
+        | Version: #{@current_step_collection.version}
+    h2
+      | What is a Step?
+    p
+      | A defined interface for a script or program
+      |  (can be split into multiple files) which can be integrated easily through the interface.
+    p
+      | StepLib is work in progres...
 
+  .page-header
+    h1
+      | Step Library
   div
     / - @current_step_collection.steps.keys.each do |a_stepid|
     /   - latest_ver = @current_step_collection.latest_version_of_step(a_stepid)
@@ -14,11 +33,16 @@
           | {{ aStepData.latest.name }}
       .panel-body[btf-markdown="aStepData.latest.description"]
 
+  .page-header
+    h1
+      | Debug
+      small<
+        | Work in progress....
   .panel.panel-info
     .panel-heading
       h3.panel-title
-        | Work in progress....
+        | Raw StepCollection data
     .panel-body
       p
         / | Datastore: #{@current_step_collection.datastore}
-        | StepCollection: {{ step_collection }}
+        | {{ step_collection }}
