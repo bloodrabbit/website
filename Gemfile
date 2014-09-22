@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org' # for bower components: https://rails-assets.org/
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -7,6 +8,7 @@ gem 'rails', '4.1.4'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
+gem 'bootstrap-sass', '~> 3.2.0'
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -37,6 +39,9 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
 end
 
+gem 'angularjs-rails'
+gem 'angular_rails_csrf'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -48,5 +53,9 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# BOWER components
+#  https://rails-assets.org/
+gem 'rails-assets-angular-markdown-directive'
 
 ruby "2.1.2"

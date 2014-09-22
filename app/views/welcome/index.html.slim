@@ -1,27 +1,24 @@
-h1
-  | Welcome to Step Lib!
+.container[ng-controller="SearchCtrl" ng-init="init()"]
+  .jumbotron
+    h1
+      | Welcome to Step Lib!
+    p
+      | Version: #{@current_step_collection.version}
 
-p
-  | Version: #{@current_step_collection.version}
+  div
+    / - @current_step_collection.steps.keys.each do |a_stepid|
+    /   - latest_ver = @current_step_collection.latest_version_of_step(a_stepid)
+    .panel.panel-default[ng-repeat="(aStepID, aStepData) in step_collection.steps"]
+      .panel-heading
+        h3.panel-title
+          | {{ aStepData.latest.name }}
+      .panel-body[btf-markdown="aStepData.latest.description"]
 
-div
-  - @current_step_collection.steps.keys.each do |a_stepid|
-    - latest_ver = @current_step_collection.latest_version_of_step(a_stepid)
-    div
-      h1 = latest_ver['name']
-      p = latest_ver['description']
+  .panel.panel-info
+    .panel-heading
+      h3.panel-title
+        | Work in progress....
+    .panel-body
       p
-        | Step: #{latest_ver}
-      / li
-      /   | Versions:
-      /   ul
-      /     - @current_step_collection.versions_of_step(a_step).each do |a_ver|
-      /       li
-      /         | #{a_ver}
-
-p
-  | Work in progress....
-
-p
-  i
-    | Datastore: #{@current_step_collection.datastore}
+        / | Datastore: #{@current_step_collection.datastore}
+        | StepCollection: {{ step_collection }}

@@ -13,4 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require angular
+//= require bootstrap
+//= require Steplib
 //= require_tree .
+//= require_tree ./controllers/
+//= require angular-markdown-directive
+//= require angular-sanitize
+//= require showdown
