@@ -4,16 +4,20 @@ h1
 p
   | Version: #{@current_step_collection.version}
 
-p
-  | Steps:
-  ul
-    - @current_step_collection.datastore['steps'].each do |a_step|
-      li
-        | Versions:
-        ul
-          - @current_step_collection.versions_of_step(a_step[0]).each do |a_ver|
-            li
-              | #{a_ver}
+div
+  - @current_step_collection.steps.keys.each do |a_stepid|
+    - latest_ver = @current_step_collection.latest_version_of_step(a_stepid)
+    div
+      h1 = latest_ver['name']
+      p = latest_ver['description']
+      p
+        | Step: #{latest_ver}
+      / li
+      /   | Versions:
+      /   ul
+      /     - @current_step_collection.versions_of_step(a_step).each do |a_ver|
+      /       li
+      /         | #{a_ver}
 
 p
   | Work in progress....

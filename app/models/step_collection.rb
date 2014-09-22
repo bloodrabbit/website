@@ -11,4 +11,9 @@ class StepCollection < ActiveRecord::Base
     puts " (debug) the_step: #{the_step}"
     return the_step['versions']
   end
+
+  def latest_version_of_step(stepid)
+    the_step = self.steps[stepid]
+    return the_step['latest']
+  end
 end
