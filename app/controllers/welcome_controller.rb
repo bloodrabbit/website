@@ -11,4 +11,7 @@ class WelcomeController < ApplicationController
       }
     end
   end
+
+  def opensource
+  end
 end

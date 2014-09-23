@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get 'steps' => 'welcome#steps'
+  get 'opensource' => 'welcome#opensource'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
