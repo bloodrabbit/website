@@ -35,14 +35,54 @@
   .page-header
     h1
       | Step Library
+  .step-search
+    .input-group
+      input.form-control[type="text" placeholder="Search" ng-model="stepSearchQuery"]
+        .input-group-btn
+          button.btn.btn-default[type="submit"]
+            i.glyphicon.glyphicon-search
   div
     / - @current_step_collection.steps.keys.each do |a_stepid|
     /   - latest_ver = @current_step_collection.latest_version_of_step(a_stepid)
-    .panel.panel-default[ng-repeat="(aStepID, aStepData) in step_collection.steps"]
+    .panel.panel-default[ng-repeat="aStepData in available_steps | filter:stepSearchQuery"]
       .panel-heading
         h3.panel-title
           | {{ aStepData.latest.name }}
-      .panel-body[btf-markdown="aStepData.latest.description"]
+          a.btn.btn-default<[ng-href="{{ aStepData.latest.website }}"]
+            span>
+              | Website
+            span.glyphicon.glyphicon-link
+      .panel-body
+        div[btf-markdown="aStepData.latest.description"]
+        .step-buttons.text-center
+          a.btn.btn-link[ng-click="aStepData.isShowDetails = !aStepData.isShowDetails"]
+            span>
+              | More info
+            span.glyphicon[ng-class="aStepData.isShowDetails ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"]
+        .step-details[ng-show="aStepData.isShowDetails"]
+          h4
+            | Available Versions:
+          a.btn.btn-link.btn-sm[ng-repeat="aStepVersion in aStepData.versions" ng-href="{{ linkToStepVersion(aStepVersion) }}" target="_blank"]
+            | [{{ aStepVersion.source.tag }}]
+          h4
+            | OS tags:
+          span[ng-repeat="aHostOSTag in aStepData.latest.host_os_tags"]
+            span>
+              | [{{ aHostOSTag }}]
+          h4
+            | Type tags:
+          span[ng-repeat="aTypeTag in aStepData.latest.type_tags"]
+            span>
+              | [{{ aTypeTag }}]
+          h4
+            | Requirements:
+          ul
+            li
+              | Requires admin user? : {{ aStepData.latest.requires_admin_user }}
+          h4
+            | Inputs (environment):
+          h4
+            | Exported Outputs (environment):
 
   .page-header
     h1

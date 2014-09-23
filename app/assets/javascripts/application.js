@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require angular
 //= require bootstrap
+//= require underscore
 //= require Steplib
 //= require_tree .
 //= require_tree ./controllers/

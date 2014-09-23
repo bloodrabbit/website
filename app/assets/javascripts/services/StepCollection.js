@@ -10,7 +10,7 @@
 
     StepCollection.prototype.fetch = function() {
       var step_collection = this;
-      $http({
+      return $http({
         method: 'GET',
         url: '/steps.json',
       }).success(function(data/*, status, headers, config*/) {
@@ -20,7 +20,7 @@
         step_collection.error = {
           'data': data,
           'status': status
-        }
+        };
       });
     };
 
