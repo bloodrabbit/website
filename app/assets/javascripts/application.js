@@ -19,6 +19,6 @@
 //= require Steplib
 //= require_tree .
 //= require_tree ./controllers/
-//= require angular-markdown-directive
 //= require angular-sanitize
 //= require showdown
+//= require angular-markdown-directive
