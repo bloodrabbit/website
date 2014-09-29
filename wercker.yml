@@ -1,10 +1,10 @@
-box: wercker/rvm
+box: viktorbenei/ruby2.1.2-heroku-postgresql
 services:
     - wercker/postgresql
 build:
     steps:
-        - rvm-use:
-            version: 2.1.2
+        # - rvm-use:
+        #     version: 2.1.2
         - bundle-install
 
         - rails-database-yml:
@@ -17,9 +17,9 @@ build:
                 echo "from location $(which ruby)"
                 echo -p "gem list: $(gem list)"
 
-        # - script:
-        #     name: Set up db
-        #     code: bundle exec rake db:schema:load RAILS_ENV=test
+        - script:
+            name: Set up db
+            code: bundle exec rake db:schema:load RAILS_ENV=test
 
         - script:
             name: rspec

@@ -1,8 +1,134 @@
-h1
-  | Welcome to Step Lib!
+.welcome.container[ng-controller="SearchCtrl" ng-init="init()"]
+  .main-links
+    p
+      a.btn.btn-link.btn-lg[href="https://github.com/steplib/steplib" role="button"]
+        | StepLib Repo
+      a.btn.btn-link.btn-lg[href="https://github.com/steplib/website" role="button"]
+        | StepLib Website Repo
+      a.btn.btn-link.btn-lg[href="https://github.com/steplib/steplib/tree/master/docs" role="button"]
+        | Docs
+      a.btn.btn-link.btn-lg[href="/opensource" role="button"]
+        | Open Source
+  .jumbotron
+    h1
+      | Welcome to Step Lib!
+    p
+      small<
+        | Version: #{@current_step_collection.version}
+    h2
+      | What is a Step?
+    p
+      | A defined interface for a script or program
+      |  (can be split into multiple files) which can be integrated easily through the interface.
+    h2
+      | What's the purpose of StepLib?
+    p
+      | To provide an open source, easy to search database of scripts and programs
+      |  which can be chained to create a workflow.
+    p
+      | An example workflow would be a Continuous integration or
+      |  Continuous delivery pipeline but it can be anything what can be
+      |  done through a serie of chained scripts and programs.
+    p
+      | StepLib is work in progres...
 
-p
-  | Datastore: #{StepCollection.first.datastore}
+  .page-header
+    h1
+      | Step Library
+  .step-search
+    .input-group
+      input.form-control[type="text" placeholder="Search in name, description, tags, ..." ng-model="stepSearchQuery"]
+        .input-group-btn
+          button.btn.btn-default[type="submit"]
+            i.glyphicon.glyphicon-search
+  div
+    / - @current_step_collection.steps.keys.each do |a_stepid|
+    /   - latest_ver = @current_step_collection.latest_version_of_step(a_stepid)
+    .panel.panel-default[ng-repeat="aStepData in available_steps | filter:stepSearchQuery"]
+      .panel-heading
+        h3.panel-title
+          | {{ aStepData.latest.name }}
+          a.btn.btn-default<[ng-href="{{ aStepData.latest.website }}"]
+            span>
+              | Website
+            span.glyphicon.glyphicon-link
+      .panel-body
+        div[btf-markdown="aStepData.latest.description"]
+        .step-buttons.text-center
+          a.btn.btn-link[ng-click="aStepData.isShowDetails = !aStepData.isShowDetails"]
+            span>
+              | More info
+            span.glyphicon[ng-class="aStepData.isShowDetails ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"]
+        .step-details[ng-show="aStepData.isShowDetails"]
+          h4
+            | Available Versions:
+          a.btn.btn-link.btn-sm[ng-repeat="aStepVersion in aStepData.versions" ng-href="{{ linkToStepVersion(aStepVersion) }}" target="_blank"]
+            | [{{ aStepVersion.source.tag }}]
+          h4
+            | OS tags:
+          span[ng-repeat="aHostOSTag in aStepData.latest.host_os_tags"]
+            span>
+              | [{{ aHostOSTag }}]
+          h4
+            | Type tags:
+          span[ng-repeat="aTypeTag in aStepData.latest.type_tags"]
+            span>
+              | [{{ aTypeTag }}]
+          h4
+            | Requirements:
+          ul
+            li
+              | Requires admin user? : {{ aStepData.latest.requires_admin_user }}
+          h4
+            | Inputs (environment):
+          .panel.panel-warning[ng-hide="aStepData.latest.inputs.length > 0"]
+            .panel-heading
+              | No inputs defined for this step.
+          div[ng-show="aStepData.latest.inputs.length > 0" ng-repeat="anInput in aStepData.latest.inputs"]
+            .panel.panel-default
+              .panel-heading
+                | The input of
+              .panel-body[btf-markdown="anInput.title"]
+              .panel-footer
+                ul
+                  li
+                    | Will be available as:
+                    code<>
+                      | ${{ anInput.mapped_to }}
+                  li[ng-show="anInput.is_expand"]
+                    | Will be expanded before injecting into the environment
+                  li[ng-hide="anInput.is_expand"]
+                    strong>
+                      | Won't be expanded
+                    | before injecting into the environment
 
-p
-  | Work in progress....
+          h4
+            | Exported Outputs (environment):
+          .panel.panel-warning[ng-hide="aStepData.latest.outputs.length > 0"]
+            .panel-heading
+              | No outputs will be exported by this step.
+          div[ng-show="aStepData.latest.outputs.length > 0" ng-repeat="anOutput in aStepData.latest.outputs"]
+            .panel.panel-default
+              .panel-heading
+                | The output of
+              .panel-body[btf-markdown="anOutput.title"]
+              .panel-footer
+                ul
+                  li
+                    | Will be exported by the step as:
+                    code<>
+                      | ${{ anOutput.mapped_to }}
+
+  .page-header
+    h1
+      | Debug
+      small<
+        | Work in progress....
+  .panel.panel-info
+    .panel-heading
+      h3.panel-title
+        | Raw StepCollection data
+    .panel-body
+      p
+        / | Datastore: #{@current_step_collection.datastore}
+        | {{ step_collection }}
