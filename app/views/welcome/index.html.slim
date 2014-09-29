@@ -67,12 +67,12 @@
           h4
             | OS tags:
           span[ng-repeat="aHostOSTag in aStepData.latest.host_os_tags"]
-            span>
+            mark>
               | [{{ aHostOSTag }}]
           h4
             | Type tags:
           span[ng-repeat="aTypeTag in aStepData.latest.type_tags"]
-            span>
+            mark>
               | [{{ aTypeTag }}]
           h4
             | Requirements:
