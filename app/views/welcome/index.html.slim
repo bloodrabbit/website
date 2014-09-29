@@ -81,8 +81,43 @@
               | Requires admin user? : {{ aStepData.latest.requires_admin_user }}
           h4
             | Inputs (environment):
+          .panel.panel-warning[ng-hide="aStepData.latest.inputs.length > 0"]
+            .panel-heading
+              | No inputs defined for this step.
+          div[ng-show="aStepData.latest.inputs.length > 0" ng-repeat="anInput in aStepData.latest.inputs"]
+            .panel.panel-default
+              .panel-heading
+                | The input of
+              .panel-body[btf-markdown="anInput.title"]
+              .panel-footer
+                ul
+                  li
+                    | Will be available as:
+                    code<>
+                      | ${{ anInput.mapped_to }}
+                  li[ng-show="anInput.is_expand"]
+                    | Will be expanded before injecting into the environment
+                  li[ng-hide="anInput.is_expand"]
+                    strong>
+                      | Won't be expanded
+                    | before injecting into the environment
+
           h4
             | Exported Outputs (environment):
+          .panel.panel-warning[ng-hide="aStepData.latest.outputs.length > 0"]
+            .panel-heading
+              | No outputs will be exported by this step.
+          div[ng-show="aStepData.latest.outputs.length > 0" ng-repeat="anOutput in aStepData.latest.outputs"]
+            .panel.panel-default
+              .panel-heading
+                | The output of
+              .panel-body[btf-markdown="anOutput.title"]
+              .panel-footer
+                ul
+                  li
+                    | Will be exported by the step as:
+                    code<>
+                      | ${{ anOutput.mapped_to }}
 
   .page-header
     h1
