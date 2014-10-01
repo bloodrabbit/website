@@ -50,7 +50,9 @@
       .panel-heading
         h3.panel-title
           | {{ aStepData.latest.name }}
-          a.btn.btn-default<[ng-href="{{ aStepData.latest.website }}"]
+          span.small<>
+            | (ID: {{ aStepData.id }})
+          a.btn.btn-default[ng-href="{{ aStepData.latest.website }}"]
             span>
               | Website
             span.glyphicon.glyphicon-link
