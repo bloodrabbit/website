@@ -5,4 +5,7 @@ StepLib website.
 
 Work in progress
 
-Tag: 0.9.2
+# TODO:
+
+* add description, with keywords:
+  * script pipeline, command pipeline, program pipeline, automated workflow
