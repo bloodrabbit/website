@@ -39,13 +39,11 @@
         | {{ available_steps.length }} steps available
   .step-search
     .input-group
-      input.form-control[type="text" placeholder="Search in name, description, tags, ..." ng-model="stepSearchQuery"]
+      input.form-control[type="text" placeholder="Search in name, description, tags, repo url, ..." ng-model="stepSearchQuery"]
         .input-group-btn
           button.btn.btn-default[type="submit"]
             i.glyphicon.glyphicon-search
   div
-    / - @current_step_collection.steps.keys.each do |a_stepid|
-    /   - latest_ver = @current_step_collection.latest_version_of_step(a_stepid)
     .panel.panel-default[ng-repeat="aStepData in available_steps | filter:stepSearchQuery"]
       .panel-heading
         h3.panel-title
@@ -67,7 +65,7 @@
           h4
             | Available Versions:
           a.btn.btn-link.btn-sm[ng-repeat="aStepVersion in aStepData.versions" ng-href="{{ linkToStepVersion(aStepVersion) }}" target="_blank"]
-            | [{{ aStepVersion.source.tag }}]
+            | [{{ aStepVersion.version_tag }}]
           h4
             | OS tags:
           span[ng-repeat="aHostOSTag in aStepData.latest.host_os_tags"]

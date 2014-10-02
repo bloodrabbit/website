@@ -17,7 +17,7 @@
     $scope.linkToStepVersion = function(aStepVersion) {
       var stepGithub = aStepVersion.source.git;
       var baseGithubUrl = stepGithub.replace(/\.[^/.]+$/, "");
-      return baseGithubUrl+"/tree/"+aStepVersion.source.tag;
+      return baseGithubUrl+"/tree/"+aStepVersion.version_tag;
     };
 
   }]);
