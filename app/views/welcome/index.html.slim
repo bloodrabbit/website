@@ -14,7 +14,8 @@
       | Welcome to Step Lib!
     p
       small<
-        | Version: #{@current_step_collection.version}
+        | StepLib format version: #{@current_step_collection.format_version}
+        |  / StepLib updated at: #{DateTime.strptime("#{@current_step_collection.generated_at_timestamp}",'%s')}
     h2
       | What is a Step?
     p

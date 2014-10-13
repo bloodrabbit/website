@@ -1,9 +1,9 @@
 class StepCollection < ActiveRecord::Base
   # setup hstore
-  store_accessor :datastore, :version, :steps
+  store_accessor :datastore, :format_version, :generated_at_timestamp, :steps
 
-  def self.find_by_version(version_str)
-    StepCollection.where("datastore @> 'version=>#{version_str}'")
+  def self.find_by_format_version(version_str)
+    StepCollection.where("datastore @> 'format_version=>#{version_str}'")
   end
 
   def versions_of_step(stepid)
