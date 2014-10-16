@@ -3,6 +3,8 @@ website
 
 StepLib website.
 
+The StepLib collection repository is available [here, on GitHub](https://github.com/steplib/steplib).
+
 Work in progress
 
 # TODO:
