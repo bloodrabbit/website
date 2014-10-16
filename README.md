@@ -5,6 +5,8 @@ StepLib website.
 
 The StepLib collection repository is available [here, on GitHub](https://github.com/steplib/steplib).
 
+The website is available at [http://www.steplib.com/(http://www.steplib.com/).
+
 Work in progress
 
 # TODO:
