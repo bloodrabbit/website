@@ -1,0 +1,17 @@
+.container
+  .page-header
+    h1
+      | API
+
+  .panel.panel-default
+    .panel-body
+      p
+        span>
+          | You can get the latest StepLib database in
+        strong<>
+          | JSON
+        span>
+          | format
+        = link_to "here", steps_list_path(format: :json)
+        span
+          | .
