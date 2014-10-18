@@ -14,4 +14,7 @@ class WelcomeController < ApplicationController
 
   def opensource
   end
+
+  def api_info
+  end
 end
