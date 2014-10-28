@@ -1,0 +1,76 @@
+.show-step.container[ng-controller="ShowStepCtrl" ng-init="init('#{@step_id}')"]
+	.panel.panel-default
+		.panel-heading
+			h3.panel-title
+				| {{ stepToShow.latest.name }}
+				span.small<>
+					| (ID: {{ stepToShow.id }})
+				a.btn.btn-default<>[ng-href="{{ stepToShow.latest.website }}" target="_blank"]
+					span>
+						| Website
+					span.glyphicon.glyphicon-link
+				a.btn.btn-default<>[ng-href="/step/{{ stepToShow.id }}" target="_blank"]
+					span>
+						| Link to this page
+					span.glyphicon.glyphicon-link
+		.panel-body
+			div[btf-markdown="stepToShow.latest.description"]
+			.step-details
+				h4
+					| Available Versions:
+				a.btn.btn-link.btn-sm[ng-repeat="aStepVersion in stepToShow.versions" ng-href="{{ linkToStepVersion(aStepVersion) }}" target="_blank"]
+					| [{{ aStepVersion.version_tag }}]
+				h4
+					| OS tags:
+				span[ng-repeat="aHostOSTag in stepToShow.latest.host_os_tags"]
+					mark>
+						| [{{ aHostOSTag }}]
+				h4
+					| Type tags:
+				span[ng-repeat="aTypeTag in stepToShow.latest.type_tags"]
+					mark>
+						| [{{ aTypeTag }}]
+				h4
+					| Requirements:
+				ul
+					li
+						| Requires admin user? : {{ stepToShow.latest.requires_admin_user }}
+				h4
+					| Inputs (environment):
+				.panel.panel-warning[ng-hide="stepToShow.latest.inputs.length > 0"]
+					.panel-heading
+						| No inputs defined for this step.
+				div[ng-show="stepToShow.latest.inputs.length > 0" ng-repeat="anInput in stepToShow.latest.inputs"]
+					.panel.panel-default
+						.panel-heading
+							| The input of
+						.panel-body[btf-markdown="anInput.title"]
+						.panel-footer
+							ul
+								li
+									| Will be available as:
+									code<>
+										| ${{ anInput.mapped_to }}
+								li[ng-show="anInput.is_expand"]
+									| Will be expanded before injecting into the environment
+								li[ng-hide="anInput.is_expand"]
+									strong>
+										| Won't be expanded
+									| before injecting into the environment
+
+				h4
+					| Exported Outputs (environment):
+				.panel.panel-warning[ng-hide="stepToShow.latest.outputs.length > 0"]
+					.panel-heading
+						| No outputs will be exported by this step.
+				div[ng-show="stepToShow.latest.outputs.length > 0" ng-repeat="anOutput in stepToShow.latest.outputs"]
+					.panel.panel-default
+						.panel-heading
+							| The output of
+						.panel-body[btf-markdown="anOutput.title"]
+						.panel-footer
+							ul
+								li
+									| Will be exported by the step as:
+									code<>
+										| ${{ anOutput.mapped_to }}

@@ -12,6 +12,25 @@
           | JSON
         span>
           | format
-        = link_to "here", steps_list_path(format: :json)
+        = link_to "here", steps_list_path(format: :json), target: '_blank'
+        span
+          | .
+      p
+        span>
+          | You can get a single Step's data in
+        strong<>
+          | JSON
+        span>
+          | format by calling:
+        code
+          | http://www.steplib.com/step/[the-step-id].json
+      p
+        span
+          | For example you can get the
+        strong<>
+          | Step Tester and Validator Step's
+        span>
+          | data
+        = link_to "here", show_step_path(step_id: 'step-tester-and-validator', format: :json), target: '_blank'
         span
           | .

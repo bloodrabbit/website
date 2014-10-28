@@ -49,9 +49,13 @@
           | {{ aStepData.latest.name }}
           span.small<>
             | (ID: {{ aStepData.id }})
-          a.btn.btn-default[ng-href="{{ aStepData.latest.website }}" target="_blank"]
+          a.btn.btn-default<>[ng-href="{{ aStepData.latest.website }}" target="_blank"]
             span>
               | Website
+            span.glyphicon.glyphicon-link
+          a.btn.btn-default<>[ng-href="/step/{{ aStepData.id }}" target="_blank"]
+            span>
+              | Page on StepLib
             span.glyphicon.glyphicon-link
       .panel-body
         div[btf-markdown="aStepData.latest.description"]

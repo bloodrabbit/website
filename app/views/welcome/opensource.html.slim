@@ -7,15 +7,36 @@
     .panel-body
       p
         span>
-          | StepLib is proudly built upon the following open source programs
-          |  and components and StepLib itself is
-        = link_to "open source", "https://github.com/steplib/steplib"
-        span<
-          | too.
+          | You can add your own steps to this collection:
+        ol
+          li
+            span>
+              | fork the
+            = link_to "StepLib repository", "https://github.com/steplib/steplib", target: '_blank'
+            span<
+              | on GitHub
+          li
+            span
+              | add your own step to the
+              strong<>
+                | steps
+              | folder
+          li
+            span
+              | send a Pull Request.
       p
         span>
           | You can find the source code of this website on
         = link_to "GitHub", "https://github.com/steplib/website"
+        span
+          | .
+      p
+        span>
+          | StepLib is proudly built upon the open source programs
+          |  and components listed below and StepLib itself is
+        = link_to "open source", "https://github.com/steplib/steplib"
+        span<
+          | too.
   p
     ul
       li = link_to "Bootstrap", "http://getbootstrap.com/"

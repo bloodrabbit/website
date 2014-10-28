@@ -6,6 +6,12 @@ class StepCollection < ActiveRecord::Base
     StepCollection.where("datastore @> 'format_version=>#{version_str}'")
   end
 
+  def step_data(stepid)
+    the_step = self.steps[stepid]
+    puts " (debug) the_step: #{the_step}"
+    return the_step
+  end
+
   def versions_of_step(stepid)
     the_step = self.steps[stepid]
     puts " (debug) the_step: #{the_step}"

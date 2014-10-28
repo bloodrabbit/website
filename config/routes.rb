@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'step/:step_id' => 'step#show', :as => :show_step
+
   get 'welcome/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -8,7 +10,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get 'steps' => 'welcome#steps', as: :steps_list
-  get 'opensource' => 'welcome#opensource'
+  get 'opensource' => 'welcome#opensource', as: :info_opensource
   get 'api-info' => 'welcome#api_info'
 
   # Example of regular route:
