@@ -1,16 +1,4 @@
 .welcome.container[ng-controller="SearchCtrl" ng-init="init()"]
-  .main-links
-    p
-      a.btn.btn-link.btn-lg[href="https://github.com/steplib/steplib" role="button"]
-        | StepLib Repo
-      a.btn.btn-link.btn-lg[href="https://github.com/steplib/website" role="button"]
-        | StepLib Website Repo
-      a.btn.btn-link.btn-lg[href="https://github.com/steplib/steplib/tree/master/docs" role="button"]
-        | Docs
-      a.btn.btn-link.btn-lg[href="/opensource" role="button"]
-        | Open Source
-      a.btn.btn-link.btn-lg[href="/api-info" role="button"]
-        | API
   .jumbotron
     h1
       | Welcome to Step Lib!
@@ -32,8 +20,16 @@
       | An example workflow would be a Continuous integration or
       |  Continuous delivery pipeline but it can be anything what can be
       |  done through a serie of chained scripts and programs.
+    h2
+      | Add your own Step
     p
-      | StepLib is work in progres...
+      span>
+        | StepLib is Open Source, you can add your own steps to
+        |  the collection.
+        |  Read more on the
+      = link_to 'Open Source page', info_opensource_path
+      span
+        | .
 
   .page-header
     h1
@@ -53,9 +49,13 @@
           | {{ aStepData.latest.name }}
           span.small<>
             | (ID: {{ aStepData.id }})
-          a.btn.btn-default[ng-href="{{ aStepData.latest.website }}" target="_blank"]
+          a.btn.btn-default<>[ng-href="{{ aStepData.latest.website }}" target="_blank"]
             span>
               | Website
+            span.glyphicon.glyphicon-link
+          a.btn.btn-default<>[ng-href="/step/{{ aStepData.id }}" target="_blank"]
+            span>
+              | Page on StepLib
             span.glyphicon.glyphicon-link
       .panel-body
         div[btf-markdown="aStepData.latest.description"]
@@ -124,16 +124,16 @@
                     code<>
                       | ${{ anOutput.mapped_to }}
 
-  .page-header
-    h1
-      | Debug
-      small<
-        | Work in progress....
-  .panel.panel-info
-    .panel-heading
-      h3.panel-title
-        | Raw StepCollection data
-    .panel-body
-      p
-        / | Datastore: #{@current_step_collection.datastore}
-        | {{ step_collection }}
+  / .page-header
+  /   h1
+  /     | Debug
+  /     small<
+  /       | Work in progress....
+  / .panel.panel-info
+  /   .panel-heading
+  /     h3.panel-title
+  /       | Raw StepCollection data
+  /   .panel-body
+  /     p
+  /       / | Datastore: #{@current_step_collection.datastore}
+  /       | {{ step_collection }}

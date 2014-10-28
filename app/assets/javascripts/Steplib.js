@@ -5,6 +5,3 @@ angular.module("Steplib", [
   'btford.markdown'
   ]);
 
-$(document).on('ready page:load', function() {
-  angular.bootstrap(document, ['Steplib']);
-});
