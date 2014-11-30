@@ -61,4 +61,4 @@ gem 'angular_rails_csrf'
 #  https://rails-assets.org/
 gem 'rails-assets-angular-markdown-directive'
 
-ruby "2.1.3"
+ruby "2.1.5"
