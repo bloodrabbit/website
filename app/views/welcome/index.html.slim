@@ -9,24 +9,55 @@
     h2
       | What is a Step?
     p
-      | A defined interface for a script or program
-      |  (can be split into multiple files) which can be integrated easily through the interface.
+      | Essentially a 
+      strong<>
+        | script or code repository
+      | with a 
+      strong<>
+        | defined interface
+      | to allow
+      strong<>
+        | integration
+      | between different steps and with services and tools
+      |  where steps can be managed and configured through a graphical user interface.
+    p
+      | Steps can also be used as
+      strong<>
+        | practical examples
+      | of how to use a tool, API or service; or how to install and configure a specific program.
     h2
       | What's the purpose of StepLib?
     p
-      | To provide an open source, easy to search database of scripts and programs
-      |  which can be chained to create a workflow.
+      | To provide an
+      strong<
+        | open source
+      | , easy to search database of
+      strong<>
+        | scripts and programs
+      |  which
+      strong<>
+        | can be chained
+      | to create a workflow or pipeline.
     p
-      | An example workflow would be a Continuous integration or
-      |  Continuous delivery pipeline but it can be anything what can be
-      |  done through a serie of chained scripts and programs.
+      | An example workflow would be a Continuous Integration or
+      |  Continuous Delivery pipeline but it can be anything what can be
+      |  done through a series of chained scripts and programs.
     h2
       | Add your own Step
     p
       span>
-        | StepLib is Open Source, you can add your own steps to
-        |  the collection.
-        |  Read more on the
+        | StepLib is
+      strong
+        | Open Source
+      span
+        | , you can
+      strong<>
+        | add your own steps
+      span
+        | to the collection.
+    p
+      span>
+        | Read more on the
       = link_to 'Open Source page', info_opensource_path
       span
         | .
@@ -49,13 +80,17 @@
           | {{ aStepData.latest.name }}
           span.small<>
             | (ID: {{ aStepData.id }})
+          a.btn.btn-link<>[ng-href="/step/{{ aStepData.id }}" target="_blank"]
+            span>
+              | Step link
+            span.glyphicon.glyphicon-link
           a.btn.btn-default<>[ng-href="{{ aStepData.latest.website }}" target="_blank"]
             span>
               | Website
             span.glyphicon.glyphicon-link
-          a.btn.btn-default<>[ng-href="/step/{{ aStepData.id }}" target="_blank"]
+          a.btn.btn-default<>[ng-href="{{ aStepData.latest.source.git }}" target="_blank"]
             span>
-              | Page on StepLib
+              | Fork this Step
             span.glyphicon.glyphicon-link
       .panel-body
         div[btf-markdown="aStepData.latest.description"]
