@@ -80,13 +80,17 @@
           | {{ aStepData.latest.name }}
           span.small<>
             | (ID: {{ aStepData.id }})
+          a.btn.btn-link<>[ng-href="/step/{{ aStepData.id }}" target="_blank"]
+            span>
+              | Step link
+            span.glyphicon.glyphicon-link
           a.btn.btn-default<>[ng-href="{{ aStepData.latest.website }}" target="_blank"]
             span>
               | Website
             span.glyphicon.glyphicon-link
-          a.btn.btn-default<>[ng-href="/step/{{ aStepData.id }}" target="_blank"]
+          a.btn.btn-default<>[ng-href="{{ aStepData.latest.source.git }}" target="_blank"]
             span>
-              | Page on StepLib
+              | Fork this Step
             span.glyphicon.glyphicon-link
       .panel-body
         div[btf-markdown="aStepData.latest.description"]
