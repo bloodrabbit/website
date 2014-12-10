@@ -1,9 +1,9 @@
 (function() {
   "use strict";
 
-  angular.module("Steplib").controller('SearchCtrl',
-    ['$scope', '$http', 'StepCollection',
-    function($scope, $http, StepCollection) {
+  angular.module("Steplib").controller('SearchController',
+    ['$scope', 'StepCollection',
+    function($scope, StepCollection) {
 
     $scope.step_collection = new StepCollection();
     $scope.available_steps = [];

@@ -1,9 +1,9 @@
 (function() {
   "use strict";
 
-  angular.module("Steplib").controller('ShowStepCtrl',
-    ['$scope', '$http', 'Step',
-    function($scope, $http, Step) {
+  angular.module("Steplib").controller('ShowStepController',
+    ['$scope', 'Step',
+    function($scope, Step) {
 
     $scope.stepToShow = null;
 
