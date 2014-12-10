@@ -5,13 +5,17 @@
 				| {{ stepToShow.latest.name }}
 				span.small<>
 					| (ID: {{ stepToShow.id }})
+				a.btn.btn-link<>[ng-href="/step/{{ stepToShow.id }}" target="_blank"]
+					span>
+						| Link to this page
+					span.glyphicon.glyphicon-link
 				a.btn.btn-default<>[ng-href="{{ stepToShow.latest.website }}" target="_blank"]
 					span>
 						| Website
 					span.glyphicon.glyphicon-link
-				a.btn.btn-default<>[ng-href="/step/{{ stepToShow.id }}" target="_blank"]
+				a.btn.btn-default<>[ng-href="{{ stepToShow.latest.source.git }}" target="_blank"]
 					span>
-						| Link to this page
+						| Fork this Step
 					span.glyphicon.glyphicon-link
 		.panel-body
 			div[btf-markdown="stepToShow.latest.description"]
