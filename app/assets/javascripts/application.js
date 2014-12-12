@@ -15,7 +15,7 @@
 //= require angular
 //= require bootstrap
 //= require underscore
-//= require Steplib
+//= require app
 //= require_tree .
 //= require_tree ./controllers/
 //= require angular-sanitize

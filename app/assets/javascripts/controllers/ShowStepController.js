@@ -1,14 +1,14 @@
 (function() {
   "use strict";
 
-  angular.module("Steplib").controller('ShowStepController',
-    ['$scope', 'Step',
-    function($scope, Step) {
+  angular.module("steplib").controller('ShowStepController',
+    ['$scope', 'step',
+    function($scope, step) {
 
     $scope.stepToShow = null;
 
     $scope.init = function(stepId) {
-      $scope.stepToShow = new Step(stepId);
+      $scope.stepToShow = new step(stepId);
       $scope.stepToShow.fetch().then(function(response) {
         //
       });

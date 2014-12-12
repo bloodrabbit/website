@@ -1,7 +1,7 @@
 (function() {
   "use strict";
 
-  angular.module('Steplib').factory('StepCollection',
+  angular.module('steplib').factory('stepCollection',
     ['$http', function($http) {
 
     var StepCollection = function() {
