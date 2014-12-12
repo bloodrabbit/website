@@ -5,22 +5,14 @@
     ['$http', function($http) {
 
     var StepCollection = function() {
-      this.error = null;
     };
 
     StepCollection.prototype.fetch = function() {
       var step_collection = this;
-      return $http({
-        method: 'GET',
-        url: '/steps.json',
-      }).success(function(data/*, status, headers, config*/) {
-        console.log("data: ", data);
-        angular.extend(step_collection, data);
-      }).error(function(data, status/*, headers, config*/) {
-        step_collection.error = {
-          'data': data,
-          'status': status
-        };
+      //
+      return $http.get('/steps.json').then(function(response) {
+        angular.extend(step_collection, response.data);
+        return response;
       });
     };
 
