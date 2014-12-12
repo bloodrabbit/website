@@ -1,0 +1,15 @@
+#workflow-editor {
+	.step-search {
+		margin: 20px 0px;
+	}
+
+	#editor-area-container {
+		$default_shadow: 0 2px 3px 0 #cccccc;
+
+		padding: 20px;
+		margin: 20px 0px;
+		background-color: #f0f0f0;
+		-webkit-box-shadow: $default_shadow;
+    	box-shadow: $default_shadow;
+	}
+}
