@@ -4,22 +4,21 @@
   angular.module('steplib').factory('step',
     ['$http', function($http) {
 
-    var Step = function(stepId) {
+    var step = function(stepId) {
       this.id = stepId;
-      this.error = null;
     };
 
-    Step.prototype.fetch = function() {
-      var step = this;
+    step.prototype.fetch = function() {
+      var thisStep = this;
 
-      var requestUrl = '/step/'+step.id+'.json';
+      var requestUrl = '/step/'+thisStep.id+'.json';
       return $http.get(requestUrl).then(function(response) {
-        angular.extend(step, response.data);
+        angular.extend(thisStep, response.data);
         return response;
       });
     };
 
-    return Step;
+    return step;
 
   }]);
 

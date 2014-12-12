@@ -4,19 +4,19 @@
   angular.module('steplib').factory('stepCollection',
     ['$http', function($http) {
 
-    var StepCollection = function() {
+    var stepCollection = function() {
     };
 
-    StepCollection.prototype.fetch = function() {
-      var step_collection = this;
+    stepCollection.prototype.fetch = function() {
+      var thisStepCollection = this;
       //
       return $http.get('/steps.json').then(function(response) {
-        angular.extend(step_collection, response.data);
+        angular.extend(thisStepCollection, response.data);
         return response;
       });
     };
 
-    return StepCollection;
+    return stepCollection;
 
   }]);
 
