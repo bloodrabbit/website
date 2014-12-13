@@ -21,11 +21,28 @@
 			h2
 				| Workflow Steps
 			.panel.panel-default[ng-repeat="aWorkflowStep in workflowModel.workflowData.workflow.steps"]
-				.panel-heading
+				.panel-heading[ng-click="toggleWorkflowStepDetails(aWorkflowStep)"]
 						h3.panel-title
-							| {{ aWorkflowStep.name }}
-				.panel-body
+							span.glyphicon[ng-class="isShowWorkflowStepDetails(aWorkflowStep) ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"]
+							span<
+								| {{ aWorkflowStep.name }}
+				.panel-body[ng-show="isShowWorkflowStepDetails(aWorkflowStep)"]
 					div[btf-markdown="aWorkflowStep.description"]
+					.panel.panel-default[ng-repeat="anInput in aWorkflowStep.inputs"]
+						.panel-heading
+							div[btf-markdown="anInput.title"]
+						.panel-body
+							div
+								code
+									| ${{ anInput.mapped_to }}
+								span<
+									| =
+							textarea.form-control[rows="3" ng-model="anInput.value"]
+						.panel-footer
+							.checkbox
+							 	label
+									input[type="checkbox" ng-model="anInput.is_expand"]
+										| Is Expand?
 		.text-center
 			button.btn.btn-link[ng-click="isShowStepCollection = !isShowStepCollection"]
 				span>
@@ -116,7 +133,7 @@
 												| Will be exported by the step as:
 												code<>
 													| ${{ anOutput.mapped_to }}
-						button.btn-default[ng-show="aStepData.selectedVersion" ng-click="insertStepVersionIntoWorkflow(aStepData.selectedVersion)"]
+						button.btn-default[ng-show="aStepData.selectedVersion" ng-click="insertStepVersionIntoWorkflow(aStepData.id, aStepData.selectedVersion)"]
 							| Add this Step Version to the end of the Workflow
 	/ --- Workflow Export (JSON) -----------------------------
 	.panel.panel-default

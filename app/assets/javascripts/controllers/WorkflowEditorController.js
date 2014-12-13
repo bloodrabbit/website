@@ -15,6 +15,8 @@
 		$scope.workflowModel = new workflow();
 		$scope.serializedWorkflowStr = '';
 
+		var isShowWorkflowStepDetails = {};
+
 
 		$scope.$watch('workflowModel.workflowData', function() {
 			$scope.serializeWorkflow();
@@ -39,10 +41,28 @@
 			$scope.serializedWorkflowStr = $scope.workflowModel.toJSONString($scope.isPrettyPrintWorkflowJSON);
 		}
 
-		$scope.insertStepVersionIntoWorkflow = function(stepVersionData) {
+		$scope.insertStepVersionIntoWorkflow = function(stepId, stepVersionData) {
 			$scope.stepSearchQuery = '';
 			$scope.isShowStepCollection = false;
+			// set workflow specific params
+			stepVersionData.id = stepId;
+			stepVersionData.position_in_workflow = $scope.workflowModel.workflowData.workflow.steps.length;
+			stepVersionData.is_always_run = false;
+			angular.forEach(stepVersionData.inputs, function(aStepInput) {
+				aStepInput.value = '';
+			});
+			// append to workflow
 			$scope.workflowModel.appendStepVersion(stepVersionData);
+			isShowWorkflowStepDetails[stepVersionData.id] = true;
+		};
+
+		$scope.toggleWorkflowStepDetails = function(workflowStep) {
+			isShowWorkflowStepDetails[workflowStep.id] = !isShowWorkflowStepDetails[workflowStep.id];
+		};
+
+		$scope.isShowWorkflowStepDetails = function(workflowStep) {
+			var isShow = !!isShowWorkflowStepDetails[workflowStep.id];
+			return isShow;
 		};
 
 	}]);
