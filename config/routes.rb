@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get 'opensource' => 'welcome#opensource', as: :info_opensource
   get 'api-info' => 'welcome#api_info'
 
+  get 'workflow/editor'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

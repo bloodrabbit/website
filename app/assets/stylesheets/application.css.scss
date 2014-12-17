@@ -16,3 +16,41 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.progress-group {
+	/* Colors */
+	$default_in_progress_background_color: #ffff99;
+	$default_darkgrey: #a4a4a4;
+	$default_grey: #bbbbbb;
+	$default_danger: #f27421;
+	/* Sizes */
+	$default_borderwidth: 4px;
+
+	&.progress-inprogress {
+
+		&.progress-background, .progress-background, input {
+			background-color: $default_in_progress_background_color !important;
+		}
+
+		.action-btn {
+			border-bottom-color: $default_darkgrey !important;
+			background-color: $default_grey !important;
+
+			&:hover {
+				border: 0px !important;
+				border-bottom: $default_borderwidth solid $default_darkgrey !important;
+			}
+		}
+	}
+
+	&.progress-error {
+
+		&.progress-border, .progress-border {
+			border: 2px solid $default_danger !important;
+		}
+
+		&.progress-fontcolor, .progress-fontcolor {
+			color: $default_danger !important;
+		}
+	}
+}
