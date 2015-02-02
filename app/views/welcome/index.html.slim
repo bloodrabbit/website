@@ -61,6 +61,13 @@
 			= link_to 'Open Source page', info_opensource_path
 			span
 				| .
+		p
+			em
+				span>
+					| StepLib is under active development. The project was started by
+				= link_to 'Bitrise', 'http://www.bitrise.io/', target: '_blank'
+				span<
+					| developers and is mainly maintained and developed by Bitrise developers at the moment. That said this project is meant to be open from the start and we would be happy to welcome others as active maintainers and contributors.
 
 	.page-header
 		h1
@@ -88,7 +95,7 @@
 						span>
 							| Website
 						span.glyphicon.glyphicon-link
-					a.btn.btn-default<>[ng-href="{{ aStepData.latest.source.git }}" target="_blank"]
+					a.btn.btn-default<>[ng-href="{{ aStepData.latest.fork_url }}" target="_blank"]
 						span>
 							| Fork this Step
 						span.glyphicon.glyphicon-link
@@ -127,8 +134,11 @@
 					div[ng-show="aStepData.latest.inputs.length > 0" ng-repeat="anInput in aStepData.latest.inputs"]
 						.panel.panel-default
 							.panel-heading
-								| The input of
-							.panel-body[btf-markdown="anInput.title"]
+								| {{ anInput.title }}
+							.panel-body[btf-markdown="anInput.description" ng-show="anInput.description"]
+							.panel-body[ng-show="!anInput.description"]
+								em
+									| No more description available for this input.
 							.panel-footer
 								ul
 									li
@@ -143,7 +153,7 @@
 										| before injecting into the environment
 
 					h4
-						| Exported Outputs (environment):
+						| Exported Outputs (environment variables):
 					.panel.panel-warning[ng-hide="aStepData.latest.outputs.length > 0"]
 						.panel-heading
 							| No outputs will be exported by this step.
